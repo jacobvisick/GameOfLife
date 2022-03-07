@@ -5,6 +5,8 @@
 
 var allCells = []
 var keepSimulating = false;
+const defaultWidth = 10;
+const defaultHeight = 10;
 const simulationDelay = 50;
 
 class Cell {
@@ -87,7 +89,7 @@ class Board {
         this.width = width;
         allCells = [];
 
-        let html = "";
+        var html = "";
         for (let y = 0; y < height; y++) {
             let row = `<tr id="row ${y}">\n`;
             let cells = "";
@@ -101,7 +103,7 @@ class Board {
 
         document.getElementById("board").innerHTML = html;
 
-        let cells = document.getElementsByClassName("cell");
+        var cells = document.getElementsByClassName("cell");
 
         for (let cell of cells) {
             cell.style.backgroundColor = "white";
@@ -122,20 +124,20 @@ class Board {
     }
 }
 
-let board = new Board(100, 50);
+var board = new Board(defaultWidth, defaultHeight);
 
 function fillCell(x, y) {
     board.fillCell(x, y);
 }
 
 function getWidthFromInput() {
-    let width = 0;
+    var width = 0;
     width  = document.getElementById("width").value;
     return width;
 }
 
 function getHeightFromInput() {
-    let height = 0;
+    var height = 0;
     height = document.getElementById("height").value;
     return height;
 }
@@ -161,17 +163,11 @@ function startSimulation() {
     }
 }
 
-function stopSimulation() {
-    keepSimulating = false;
-}
-
 document.getElementById("start").onclick = function() {
-    console.log("starting");
     keepSimulating = true;
     startSimulation();
 }
 
 document.getElementById("stop").onclick = function() {
-    console.log("stopping");
-    stopSimulation();
+    keepSimulating = false;
 }
