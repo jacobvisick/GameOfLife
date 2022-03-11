@@ -7,7 +7,7 @@ var allCells = []
 var keepSimulating = false;
 const defaultWidth = 10;
 const defaultHeight = 10;
-const simulationDelay = 50;
+const simulationDelay = 250;
 
 class Cell {
     constructor (x, y, isAlive) {
@@ -36,7 +36,6 @@ class Cell {
     
     updateStatus() {
         var neighbors = this.getLivingNeighbors();
-        var living = 0;
         var livingNeighbors = []
 
         neighbors.forEach(function(neighbor) {
